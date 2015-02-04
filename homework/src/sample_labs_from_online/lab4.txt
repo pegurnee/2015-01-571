@@ -1,0 +1,18 @@
+JDBC Introduction
+
+In this assignment, you will write a java program which takes any of the following commands as command line argument (not as input), and executes them using JDBC:
+insert into relationname value1 value2 value3 .. 
+
+Inserts a tuple into the specified relation with the specified values; make sure you use a prepared statement; test it with input containing single quotes (if you run from command line, enclose those in double quotes so linux doesn't interpret the quotes) you can assume that all values are strings for simplicity
+select from relationnam 
+
+Prints all tuples from the specified relation. For the purpose of this assignment, you should assume that relationname is one of "instructor", "student" or "takes", and not use database metadata features to print the tuples.
+select from relationname where "condition 
+
+Executes a query with the specified condition. Note the use of double quotes so that the condition comes as a single command line parameter. Again assume relationname is one of those from the previous feature. So this is really a small addition to the code for the previous feature, do NOT make a separate copy of the code.
+select from relationname1 relationname 
+
+Displays result of natural join of the two relations. This time, use the resultset metadata feature to display all values from the query result; don't worry about displaying column names, that is optional, we only care about values being displayed.
+Note: In netbeans, to pass parameters to a program, you can right click on the project, choose configuration > customize. Or run this as a standalone java program instead of using netbeans (after you develop it using netbeans). Use the parameter argv to the main function, which provides you an array of Strings, with each word above part of one string. Use argv.length to figure out how many parameters are present.
+
+For 0 extra credit: If you finish the above early and are bored, try adding column names to the select from relationname option; assume from is not a valid column name. You get no extra marks, except that if you goof up an earlier part, you may still get full marks on the assignment if you do this right (it's very unlikely you will do this part if you goof up an earlier part, anyway)

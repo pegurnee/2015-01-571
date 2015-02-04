@@ -1,0 +1,12 @@
+Servlets
+
+There are two parts to this assignment both to be implemented using Java Servlets. You can copy the sample servlet and edit it to get your servlets working. You may find it useful to output debug statements both to the response, and to System.out (you will see it on the netbeans screen and/or in the tomcat/glassfish log files)
+Create a web page with separate forms, and corresponding servlets, to perform each of the following actions:
+Accept a roll number, and display the following data about the student: name, department, and all courses taken, in tabular form: list the course id, title, credits and grade (show a blank if the grade is null).
+Accept a word, and find all courses whose title contains that word
+Show all students with two or more fail grades; no need to show the courses they have failed, and I don't care if they passed the course subsequently.
+Take a roll number, name and department name, and insert a new student record with tot_creds set to 0. Make sure you catch exceptions and report them (and test it with an incorrect department name, to see what happens when a foreign key constraint is violated, and similarly with a duplicate roll number, to see what happens when a primary key constraint is violated). Make sure also to close connections, even if there is an exception.
+This part of the assignment illustrates how it is useful to create functions that generate HTML, instead of writing it directly.
+Write a function createDropDown(ResultSet) that takes a ResultSet, and creates a drop-down menu from the ResultSet; the first attribute is used as the result value, and all attributes are displayed in the drop-down menu, concatenated together.
+Also write a function createDropDown(String) which does the same thing, but instead of a ResultSet it takes an SQL query as a string; the second version can be used safely as long as the query does not involve any value that the user inputs, otherwise it would be vulnerable to SQL injection attacks.
+Create form interfaces to insert records for the student and instructor tables, with a drop-down menu for the department name, showing all valid department names. As before, exceptions should be caught and reported.

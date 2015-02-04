@@ -1,0 +1,7 @@
+JDBC Metadata
+
+In this assignment you should use JDBC metadata features to implement keyword search on relational data, as follows.
+Your program takes a single keyword as argument, and finds all tuples in any relation that contain that word as a substring in any column of the tuple. The output is the entire tuple. You search should not be case sensitive and can match part of a word, so a keyword Avi matches a string avi, as also Ravi. Create SQL queries dynamically, using the like clause to implement this feature.
+You will find it useful to implement a separate method that can output all tuples from a ResultSet.
+
+For extra credit: As above, but now you should accept more than one keyword as argument, and ensure that a tuple contains all the keywords; the keywords can each be in a different attribute, as long as the tuple contains all the keywords.
