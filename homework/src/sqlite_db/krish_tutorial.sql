@@ -1,0 +1,11 @@
+PRAGMA foreign_keys=ON;
+BEGIN TRANSACTION;
+CREATE TABLE Emp (EID int, FName varchar(10), LName varchar(10), Salary int, DID int, primary key(EID), foreign key(DID) references Dept);
+INSERT INTO "Emp" VALUES(123,'Snow','White',30000,1);
+INSERT INTO "Emp" VALUES(456,'Peter','Pan',40000,2);
+INSERT INTO "Emp" VALUES(789,'Cinderella',NULL,0,3);
+CREATE TABLE Dept (DID int, DName varchar(10) not null, Location varchar(10), primary key(did), unique(DName));
+INSERT INTO "Dept" VALUES(1,'Administration ',NULL);
+INSERT INTO "Dept" VALUES(2,'Travel ',NULL);
+INSERT INTO "Dept" VALUES(3,'Housekeeping ',NULL);
+COMMIT;
