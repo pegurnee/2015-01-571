@@ -105,7 +105,7 @@
 		Aoi       
 		Bourikas  
 		Tanaka    
-	b.	select distinct student.ID, name from student, takes where year>2009 or year=2009 and semester<>'Winter';
+	b.	select distinct student.ID, name from student, takes where takes.ID = student.ID and (year>2009 or (year=2009 and semester<>'Winter'));
 		ID          name      
 		----------  ----------
 		00128       Zhang     
