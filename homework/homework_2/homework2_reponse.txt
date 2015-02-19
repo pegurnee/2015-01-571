@@ -1,0 +1,148 @@
+2.
+	a. 	select * from student;
+		ID          name        dept_name   tot_cred  
+		----------  ----------  ----------  ----------
+		00128       Zhang       Comp. Sci.  102       
+		12345       Shankar     Comp. Sci.  32        
+		19991       Brandt      History     80        
+		23121       Chavez      Finance     110       
+		44553       Peltier     Physics     56        
+		45678       Levy        Physics     46        
+		54321       Williams    Comp. Sci.  54        
+		55739       Sanchez     Music       38        
+		70557       Snow        Physics     0         
+		76543       Brown       Comp. Sci.  58        
+		76653       Aoi         Elec. Eng.  60        
+		98765       Bourikas    Elec. Eng.  98        
+		98988       Tanaka      Biology     120
+		
+	b. 	select course_id from section where year=2009 and semester='Spring';
+		course_id 
+		----------
+		CS-190    
+		CS-190    
+		EE-181
+		
+	c.	select name, 124-tot_cred as credit_remaining from student;
+		name        credit_remaining
+		----------  ----------------
+		Zhang       22              
+		Shankar     92              
+		Brandt      44              
+		Chavez      14              
+		Peltier     68              
+		Levy        78              
+		Williams    70              
+		Sanchez     86              
+		Snow        124             
+		Brown       66              
+		Aoi         64              
+		Bourikas    26              
+		Tanaka      4
+		
+	d.	select count(ID) as num_instructors, avg(salary) as average_salary from instructor;
+		num_instructors  average_salary  
+		---------------  ----------------
+		12               74833.3333333333
+		
+	e.	select course_id from section where semester='Spring' or semester='Summer';
+		course_id 
+		----------
+		BIO-101   
+		BIO-301   
+		CS-101    
+		CS-190    
+		CS-190    
+		CS-315    
+		CS-319    
+		CS-319    
+		EE-181    
+		FIN-201   
+		HIS-351   
+		MU-199
+		
+	f.	select * from classroom where capacity>=50 and capacity<=100;
+		building    room_number  capacity  
+		----------  -----------  ----------
+		Taylor      3128         70        
+		Watson      120          50
+		
+	g.	select * from instructor where name like 'K%';
+		ID          name        dept_name   salary    
+		----------  ----------  ----------  ----------
+		45565       Katz        Comp. Sci.  75000     
+		98345       Kim         Elec. Eng.  80000
+		
+	g.	select ID as student_id from takes where grade like 'A%' or grade='B+';
+		student_id
+		----------
+		00128     
+		00128     
+		12345     
+		12345     
+		12345     
+		45678     
+		54321     
+		54321     
+		55739     
+		76543     
+		76543     
+		98988
+3.
+	a.	select distinct name from student, takes where course_id like 'CS%';
+		name      
+		----------
+		Zhang     
+		Shankar   
+		Brandt    
+		Chavez    
+		Peltier   
+		Levy      
+		Williams  
+		Sanchez   
+		Snow      
+		Brown     
+		Aoi       
+		Bourikas  
+		Tanaka    
+	b.	select distinct student.ID, name from student, takes where year>2009 or year=2009 and semester<>'Winter';
+		ID          name      
+		----------  ----------
+		00128       Zhang     
+		12345       Shankar   
+		19991       Brandt    
+		23121       Chavez    
+		44553       Peltier   
+		45678       Levy      
+		54321       Williams  
+		55739       Sanchez   
+		70557       Snow      
+		76543       Brown     
+		76653       Aoi       
+		98765       Bourikas  
+		98988       Tanaka
+	c.	select instructor.dept_name, max(salary) from instructor, department group by instructor.dept_name;
+		dept_name   max(salary)
+		----------  -----------
+		Biology     72000      
+		Comp. Sci.  92000      
+		Elec. Eng.  80000      
+		Finance     90000      
+		History     62000      
+		Music       40000      
+		Physics     95000
+	d.	select dept_name, min(max_salary) from (select instructor.dept_name, max(salary) as max_salary from instructor, department group by instructor.dept_name);
+		dept_name   min(max_salary)
+		----------  ---------------
+		Music       40000 
+4.
+	b.	select sum(amount) from loan;
+	c.	select distinct branch_name from branch where asset > (select min(assets) from branch where branch_name='Brooklyn');
+5.
+	a.	select distinct member.name from member, borrowed, book where book.publisher='McGraw-Hill';
+	c.	select member.name from member, (select publisher, count(borrowed.isbn), borrowed.memb_no as borrow_count from book, borrowed group by publisher) as publisher_count where borrow_count > 5;
+6.	create view tot_credits as select year, sum(credits) from course, section group by year;
+7.	This program travels up the employee hierarchy, displaying a managers name, then the name of who manages them, then who manages them, until an employee without a manager is reached.
+		
+		
+		
