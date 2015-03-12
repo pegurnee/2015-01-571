@@ -1,0 +1,10 @@
+employee(number, name)
+mechanic(
+does(
+repair_job(number, description, cost, parts, work)
+repairs(
+car(license, manufacturer, model, year)
+salesman(
+buys(price, date, value)
+sells(date, value, commission)
+client(id, name, address, phone)
